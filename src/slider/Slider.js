@@ -47,6 +47,10 @@ function Slider(props) {
   return (
     <div className="container">
       <div className="track">
+        <div
+          className="change-track-color"
+          style={{ width: `${position}%` }}
+        ></div>
         <div className="thumb" ref={thumbRef} style={{ left: `${position}%` }}>
           <div className="text">{position}</div>
         </div>

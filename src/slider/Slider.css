@@ -22,12 +22,11 @@ body {
 }
 
 .change-track-color {
-  /* display: block;
+  display: block;
   position: absolute;
-  width: 230px;
-  height: 4px; */
+  height: 4px;
   background: #0d34ff;
-  /* border-radius: 4px; */
+  border-radius: 4px;
 }
 
 .thumb {
