@@ -4,9 +4,9 @@ import Slider from "./slider/Slider";
 
 function App() {
   return (
-    <>
-      <Slider />
-    </>
+    <div className="App">
+      <Slider min={0} max={99} />
+    </div>
   );
 }
 

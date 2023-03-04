@@ -5,7 +5,7 @@ function Slider(props) {
   const { min, max } = props;
   const isDragging = useRef(false);
   const thumbRef = useRef();
-  const [position, setPosition] = useState(0);
+  const [position, setPosition] = useState(min);
 
   const onMouseDown = useCallback((event) => {
     if (thumbRef.current && thumbRef.current.contains(event.target)) {
@@ -19,19 +19,22 @@ function Slider(props) {
     }
   }, []);
 
-  const onMouseMove = useCallback((event) => {
-    if (isDragging.current) {
-      setPosition((position) => {
-        if (position <= 0 && event.movementX < 0) {
-          return 0;
-        } else if (position >= 99 && event.movementX > 0) {
-          return 99;
-        } else if (position >= 0 && position <= 99) {
-          return position + event.movementX;
-        }
-      });
-    }
-  }, []);
+  const onMouseMove = useCallback(
+    (event) => {
+      if (isDragging.current) {
+        setPosition((position) => {
+          if (position <= min && event.movementX < 0) {
+            return min;
+          } else if (position >= max && event.movementX > 0) {
+            return max;
+          } else if (position >= min && position <= max) {
+            return position + event.movementX;
+          }
+        });
+      }
+    },
+    [min, max]
+  );
 
   useEffect(() => {
     document.addEventListener("mouseup", onMouseUp);
